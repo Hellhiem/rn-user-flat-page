@@ -9,10 +9,13 @@ type PropsType = $Exact<{
   currentPage: number,
   usersData: Array<UserDataType>,
   fetchUsers: (itemsPerPage: number, page: number) => void,
-  isFetching: boolean
+  isFetching: boolean,
+  totalPages: number
 }>;
 
 const { en } = languages;
+
+const PAGE_ITEMS = 5;
 
 const Container = styled.View`
   flex: 1;
@@ -27,7 +30,7 @@ const Loader = styled.ActivityIndicator`
 
 class UserList extends Component<PropsType> {
   componentDidMount() {
-    this.props.fetchUsers(5, 1);
+    this.props.fetchUsers(PAGE_ITEMS, 1);
   }
 
   renderUserItem = ({ item }: { item: UserDataType }): React$Node => {
@@ -36,6 +39,26 @@ class UserList extends Component<PropsType> {
 
   renderEmptyListComponent = () => {
     return <EmptyListComponent noItemsText={en.usersListScreen.noUsers} />;
+  };
+
+  onEndReached = () => {
+    const { currentPage, fetchUsers, totalPages } = this.props;
+
+    if (currentPage === totalPages) {
+      return null;
+    }
+
+    fetchUsers(PAGE_ITEMS, currentPage + 1);
+  };
+
+  onRefresh = () => {
+    const { currentPage, fetchUsers, totalPages } = this.props;
+
+    if (currentPage === totalPages) {
+      return null;
+    }
+
+    fetchUsers(PAGE_ITEMS, currentPage);
   };
 
   render() {
@@ -49,7 +72,11 @@ class UserList extends Component<PropsType> {
         ) : (
           <UserFlatList
             data={usersData}
+            refreshing={isFetching}
+            onRefresh={this.onRefresh}
+            onEndReached={this.onEndReached}
             renderItem={this.renderUserItem}
+            onEndReachedThreshold={0.1}
             keyExtractor={item => {
               return item.id.toString();
             }}
