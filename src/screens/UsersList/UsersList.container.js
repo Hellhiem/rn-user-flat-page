@@ -6,7 +6,8 @@ import UserList from "./UsersList.component";
 
 const mapStateToProps = ({ users }) => {
   return {
-    usersData: users.data,
+    currentPage: users.data.page,
+    usersData: users.data.data,
     isFetching: users.isFetching,
     isStarted: users.isStarted
   };
