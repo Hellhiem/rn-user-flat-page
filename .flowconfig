@@ -6,7 +6,7 @@
 
 [libs]
 
-/flow
+src/flow
 /flow-typed
 flow-typed
 

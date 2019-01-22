@@ -4,6 +4,7 @@
   "rules": {
     "prettier/prettier": ["error",{ "printWidth": 120 }],
     "flowtype/no-types-missing-file-annotation": "error",
+    "promise/catch-or-return": "off",
     "flowtype/require-valid-file-annotation": [
       2,
       "always"
