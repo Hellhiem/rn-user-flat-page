@@ -19,7 +19,6 @@ const PAGE_ITEMS = 5;
 
 const Container = styled.View`
   flex: 1;
-  margin-top: 50px;
 `;
 
 const UserFlatList = styled.FlatList``;

@@ -9,7 +9,7 @@ type PropsType = $Exact<{
 }>;
 
 const Container = styled.View`
-  padding: 15px 20px 15px 20px;
+  padding: 25px 20px 25px 20px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
