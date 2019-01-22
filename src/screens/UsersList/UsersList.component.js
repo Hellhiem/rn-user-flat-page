@@ -28,6 +28,12 @@ const Loader = styled.ActivityIndicator`
   margin-top: 25px;
 `;
 
+const Separator = styled.View`
+  height: 1px;
+  background-color: grey;
+  margin-horizontal: 15px;
+`;
+
 class UserList extends Component<PropsType> {
   componentDidMount() {
     this.props.fetchUsers(PAGE_ITEMS, 1);
@@ -80,6 +86,7 @@ class UserList extends Component<PropsType> {
             keyExtractor={item => {
               return item.id.toString();
             }}
+            ItemSeparatorComponent={() => <Separator />}
             ListEmptyComponent={this.renderEmptyListComponent}
           />
         )}
