@@ -2,7 +2,10 @@
 import { USER_FETCH_REQUEST, USER_FETCH_SUCCESS, USER_FETCH_FAIL } from "./constants";
 
 const initialState: UserStateType = {
-  data: [],
+  data: {
+    data: [],
+    page: 1
+  },
   isStarted: false,
   isFetching: false
 };
@@ -20,7 +23,7 @@ function users(state: UserStateType = initialState, action: Object) {
         ...state,
         isStarted: true,
         isFetching: false,
-        data: action.response.data.data
+        data: action.response.data
       };
     case USER_FETCH_FAIL:
       return {
