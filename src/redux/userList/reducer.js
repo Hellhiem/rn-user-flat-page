@@ -1,5 +1,6 @@
 // @flow
 import concat from "lodash/concat";
+import uniqBy from "lodash/uniqBy";
 import { USER_FETCH_REQUEST, USER_FETCH_SUCCESS, USER_FETCH_FAIL } from "./constants";
 
 const initialState: UserStateType = {
@@ -26,7 +27,7 @@ function users(state: UserStateType = initialState, action: Object) {
         isStarted: true,
         isFetching: false,
         data: {
-          data: concat(state.data.data, action.response.data.data),
+          data: uniqBy(concat(state.data.data, action.response.data.data), "id"),
           page: action.response.data.page,
           total_pages: action.response.data.total_pages
         }
