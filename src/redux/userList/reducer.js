@@ -1,4 +1,5 @@
 // @flow
+import concat from "lodash/concat";
 import { USER_FETCH_REQUEST, USER_FETCH_SUCCESS, USER_FETCH_FAIL } from "./constants";
 
 const initialState: UserStateType = {
@@ -15,7 +16,7 @@ function users(state: UserStateType = initialState, action: Object) {
   switch (action.type) {
     case USER_FETCH_REQUEST:
       return {
-        ...initialState,
+        ...state,
         isStarted: true,
         isFetching: true
       };
@@ -24,7 +25,11 @@ function users(state: UserStateType = initialState, action: Object) {
         ...state,
         isStarted: true,
         isFetching: false,
-        data: action.response.data
+        data: {
+          data: concat(state.data.data, action.response.data.data),
+          page: action.response.data.page,
+          total_pages: action.response.data.total_pages
+        }
       };
     case USER_FETCH_FAIL:
       return {
@@ -37,4 +42,4 @@ function users(state: UserStateType = initialState, action: Object) {
   }
 }
 
-export { users };
+export { users, initialState };
