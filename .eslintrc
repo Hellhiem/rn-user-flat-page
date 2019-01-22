@@ -1,0 +1,25 @@
+{
+  "extends": ["bambi/native"],
+  "plugins": ["fp"],
+  "rules": {
+    "prettier/prettier": ["error",{ "printWidth": 120 }],
+    "flowtype/no-types-missing-file-annotation": "error",
+    "flowtype/require-valid-file-annotation": [
+      2,
+      "always"
+    ],
+    "react/style-prop-object": "error",
+    "promise/avoid-new": "off",
+    "no-unused-vars": "error",
+    "prefer-const": "error",
+    "no-console": [
+      "error",
+      {
+        "allow": ["warn", "error", "ignoredYellowBox"]
+      }
+    ]
+  },
+  "globals": {
+    "__dirname": true
+  }
+}
