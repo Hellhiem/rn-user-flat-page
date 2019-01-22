@@ -5557,6 +5557,11 @@ react-native-axios@^0.17.1:
   dependencies:
     follow-redirects "0.0.7"
 
+react-native-fast-image@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-5.1.2.tgz#c9b909993e9304736c3d9806df80f7a9705ef829"
+  integrity sha512-NZsuW36I4fqnlOuxh0ZY31Q7wGWSqZMOC0wtp7ZcSG2dmjXSFaSFTdxX2vJx4Dhm0tMT3qG4yrn2ob3BiZEudA==
+
 react-native@0.57.8:
   version "0.57.8"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.57.8.tgz#1a840fbe144cd3902cc14313a783ce28efc48cb9"
