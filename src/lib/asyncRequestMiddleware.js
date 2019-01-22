@@ -1,6 +1,7 @@
 // @flow
+import { type Dispatch } from "redux";
 
-const asyncRequestMiddleware = ({ dispatch }: () => void) => {
+const asyncRequestMiddleware = ({ dispatch }: Dispatch<*>) => {
   return (next: (object: Object) => void) => {
     return async (action: Object) => {
       if (typeof action === "function") {

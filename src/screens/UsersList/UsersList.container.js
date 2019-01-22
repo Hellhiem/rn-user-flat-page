@@ -4,7 +4,7 @@ import { compose } from "redux";
 import { fetchUsersAction } from "../../redux/userList/actions";
 import UserList from "./UsersList.component";
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ users }: { users: UserStateType }) => {
   return {
     currentPage: users.data.page,
     totalPages: users.data.total_pages,
