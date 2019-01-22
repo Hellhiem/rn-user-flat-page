@@ -17,5 +17,6 @@ type UserResponseType = $Exact<{
 type UserStateType = $Exact<{
   data: UserResponseType,
   isStarted: boolean,
-  isFetching: boolean
+  isFetching: boolean,
+  error: ?string
 }>;

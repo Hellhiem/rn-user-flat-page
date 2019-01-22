@@ -2,7 +2,8 @@
 const languages = {
   en: {
     usersListScreen: {
-      pageNumber: "Page number"
+      pageNumber: "Page number",
+      noUsers: "No users to display :("
     }
   }
 };

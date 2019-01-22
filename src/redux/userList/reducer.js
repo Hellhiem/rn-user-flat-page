@@ -4,10 +4,11 @@ import { USER_FETCH_REQUEST, USER_FETCH_SUCCESS, USER_FETCH_FAIL } from "./const
 const initialState: UserStateType = {
   data: {
     data: [],
-    page: 1
+    page: 0
   },
   isStarted: false,
-  isFetching: false
+  isFetching: false,
+  error: null
 };
 
 function users(state: UserStateType = initialState, action: Object) {
