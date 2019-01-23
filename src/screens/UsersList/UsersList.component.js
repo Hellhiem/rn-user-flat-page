@@ -43,7 +43,9 @@ class UserList extends Component<PropsType> {
   };
 
   renderEmptyListComponent = () => {
-    return <EmptyListComponent noItemsText={en.usersListScreen.noUsers} />;
+    const { isFetching } = this.props;
+
+    return isFetching ? null : <EmptyListComponent noItemsText={en.usersListScreen.noUsers} />;
   };
 
   onEndReached = () => {
@@ -72,23 +74,20 @@ class UserList extends Component<PropsType> {
     return (
       <Container>
         <PageIndicator pageNumber={currentPage} indicatorTitle={en.usersListScreen.pageNumber} />
-        {isFetching ? (
-          <Loader size="large" color="grey" />
-        ) : (
-          <UserFlatList
-            data={usersData}
-            refreshing={isFetching}
-            onRefresh={this.onRefresh}
-            onEndReached={this.onEndReached}
-            renderItem={this.renderUserItem}
-            onEndReachedThreshold={0.1}
-            keyExtractor={item => {
-              return item.id.toString();
-            }}
-            ItemSeparatorComponent={() => <Separator />}
-            ListEmptyComponent={this.renderEmptyListComponent}
-          />
-        )}
+        <UserFlatList
+          data={usersData}
+          refreshing={isFetching}
+          onRefresh={this.onRefresh}
+          onEndReached={this.onEndReached}
+          renderItem={this.renderUserItem}
+          onEndReachedThreshold={0.1}
+          keyExtractor={item => {
+            return item.id.toString();
+          }}
+          ItemSeparatorComponent={() => <Separator />}
+          ListEmptyComponent={this.renderEmptyListComponent}
+        />
+        {isFetching && <Loader size="large" color="grey" />}
       </Container>
     );
   }
