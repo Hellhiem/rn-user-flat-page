@@ -5,5 +5,4 @@ import { AppRegistry } from "react-native";
 import InitialConfigScreen from "./src/InitialConfigScreen";
 import { name as appName } from "./app.json";
 
-// AppRegistry.registerComponent(appName, () => InitialConfigScreen);
-AppRegistry.registerComponent(appName, () => AppRegistry);
+AppRegistry.registerComponent(appName, () => InitialConfigScreen);
